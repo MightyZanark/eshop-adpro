@@ -34,5 +34,18 @@ public class ProductController {
         List<Product> allProducts = service.findAll();
         model.addAttribute("products", allProducts);
         return "productList";
-    }   
+    }
+
+    @GetMapping("/edit")
+    public String editProductPage(@RequestParam("id") String productId, Model model) {
+        Product product = service.find(productId);
+        model.addAttribute("product", product);
+        return "editProduct";
+    }
+
+    @PutMapping("/edit")
+    @ResponseBody
+    public void editProductPut(@RequestBody Product product, Model model) {
+        service.edit(product);
+    }
 }
