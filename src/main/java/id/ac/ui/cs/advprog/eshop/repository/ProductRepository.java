@@ -3,9 +3,11 @@ package id.ac.ui.cs.advprog.eshop.repository;
 import id.ac.ui.cs.advprog.eshop.model.Product;
 import org.springframework.stereotype.Repository;
 
+import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.HashMap;
+import java.util.Queue;
 import java.util.List;
 import java.util.UUID;
 import java.util.Map;
@@ -15,12 +17,21 @@ import java.util.NoSuchElementException;
 public class ProductRepository {
     private List<Product> productData = new ArrayList<>();
     private Map<String, Integer> productIdToIdx = new HashMap<>();
+    private Queue<Integer> emptyIndexes = new ArrayDeque<>();
 
     public Product create(Product product) {
+        int index;
         String id = UUID.randomUUID().toString();
         product.setProductId(id);
-        productData.add(product);
-        productIdToIdx.put(id, productData.size() - 1);
+        if (emptyIndexes.isEmpty()) {
+            productData.add(product);
+            index = productData.size() - 1;
+        } else {
+            index = emptyIndexes.poll();
+            productData.set(index, product);
+        }
+        productIdToIdx.put(id, index);
+        
         return product;
     }
 
@@ -40,8 +51,16 @@ public class ProductRepository {
         return productData.get(index);
     }
 
-    public void edit(Product newProduct) {
-        Integer index = getProductIndex(newProduct.getProductId());
-        productData.set(index, newProduct);
+    public void edit(Product product) {
+        Integer index = getProductIndex(product.getProductId());
+        productData.set(index, product);
+    }
+
+    public Product delete(String productId) {
+        Integer index = getProductIndex(productId);
+        Product product = productData.get(index);
+        productData.set(index, null);
+        productIdToIdx.remove(productId);
+        return product;
     }
 }
