@@ -48,4 +48,17 @@ public class ProductController {
     public void editProductPut(@RequestBody Product product, Model model) {
         service.edit(product);
     }
+
+    @GetMapping("/delete")
+    public String deleteProductPage(@RequestParam("id") String productId, Model model) {
+        Product product = service.find(productId);
+        model.addAttribute("product", product);
+        return "deleteProduct";
+    }
+
+    @DeleteMapping("/delete")
+    @ResponseBody
+    public void deleteProduct(@RequestBody String productId) {
+        service.delete(productId);
+    }
 }
