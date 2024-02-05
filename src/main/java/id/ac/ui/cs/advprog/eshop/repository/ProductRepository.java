@@ -9,7 +9,6 @@ import java.util.Iterator;
 import java.util.HashMap;
 import java.util.Queue;
 import java.util.List;
-import java.util.UUID;
 import java.util.Map;
 import java.util.NoSuchElementException;
 
@@ -21,8 +20,6 @@ public class ProductRepository {
 
     public Product create(Product product) {
         int index;
-        String id = UUID.randomUUID().toString();
-        product.setProductId(id);
         if (emptyIndexes.isEmpty()) {
             productData.add(product);
             index = productData.size() - 1;
@@ -30,7 +27,7 @@ public class ProductRepository {
             index = emptyIndexes.poll();
             productData.set(index, product);
         }
-        productIdToIdx.put(id, index);
+        productIdToIdx.put(product.getProductId(), index);
         
         return product;
     }
