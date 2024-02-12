@@ -36,7 +36,7 @@ public class ProductRepository {
         return productData.iterator();
     }
 
-    private int getProductIndex(String productId) {
+    public int getProductIndex(String productId) {
         Integer index = productIdToIdx.get(productId);
         if (index == null)
             throw new NoSuchElementException("Product with id " + productId + " does not exists");
@@ -57,6 +57,7 @@ public class ProductRepository {
         Integer index = getProductIndex(productId);
         Product product = productData.get(index);
         productData.set(index, null);
+        emptyIndexes.add(index);
         productIdToIdx.remove(productId);
         return product;
     }
