@@ -1,4 +1,6 @@
 # Reflections
+Deployment dapat dilihat di [sini](https://eshop-advprog-zanark-org.koyeb.app/).
+
 - [Modul 1](#modul-1)
 - [Modul 2](#modul-2)
 
