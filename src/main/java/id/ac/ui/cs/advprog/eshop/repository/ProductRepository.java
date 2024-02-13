@@ -38,8 +38,9 @@ public class ProductRepository {
 
     public int getProductIndex(String productId) {
         Integer index = productIdToIdx.get(productId);
-        if (index == null)
+        if (index == null) {
             throw new NoSuchElementException("Product with id " + productId + " does not exists");
+        }
         return index;
     }
 
