@@ -20,5 +20,10 @@ jobs:
           cache: "gradle"
       - name: Set gradlew as executable
         run: chmod +x ./gradlew
-      - name: Run unit tests
+      - name: Run unit tests and generate JaCoCo test report
         run: ./gradlew test
+      - name: Generate JaCoCo badge
+        uses: cicirello/jacoco-badge-generator@v2
+        with:
+          jacoco-csv-file: build/reports/jacoco/test/jacocoTestReport.csv
+          generate-branches-badge: true
