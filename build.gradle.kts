@@ -85,6 +85,10 @@ tasks.jacocoTestReport {
             }
         })
     )
+
+    reports {
+        csv.required = true
+    }
 }
 
 pmd {
