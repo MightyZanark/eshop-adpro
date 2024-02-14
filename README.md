@@ -1,4 +1,7 @@
 # Reflections
+[![Coverage](.github/badges/jacoco.svg)](https://github.com/MightyZanark/eshop-adpro/actions/workflows/ci.yml)
+[![Branches](.github/badges/branches.svg)](https://github.com/MightyZanark/eshop-adpro/actions/workflows/ci.yml)
+
 Deployment dapat dilihat di [sini](https://eshop-advprog-zanark-org.koyeb.app/).
 
 - [Modul 1](#modul-1)
@@ -25,7 +28,7 @@ Berdasarkan code `CreateProductFunctionalTest.java` yang saya buat, terdapat beb
 ## Modul 2
 > List the code quality issue(s) that you fixed during the exercise and explain your strategy on fixing them.
 
-Code quality issues yang saya perbaiki cukup minor, yaitu hanya memperbaiki statement `if` yang seharusnya menggunakan kurung kurawal meskipun hanya ada 1 statement setelahnya dan menghapus modifier `public` dari method yang di deklarasi pada interface `PublicService`. List code quality issues tersebut dapat dilihat pada link [berikut](https://github.com/MightyZanark/eshop-adpro/security/code-scanning?query=is%3Aclosed+branch%3Amaster). Strategi saya dalam memperbaiki code quality issues tersebut adalah melihat permasalahannya di tab `Security` di GitHub dan melakukan apa yang diminta permasalahan tersebut.
+Code quality issues yang saya perbaiki cukup minor, yaitu hanya memperbaiki statement `if` yang seharusnya menggunakan kurung kurawal meskipun hanya ada 1 statement setelahnya dan menghapus modifier `public` dari method yang di deklarasi pada interface `PublicService`. List code quality issues tersebut dapat dilihat pada link [berikut](https://github.com/MightyZanark/eshop-adpro/security/code-scanning?query=is%3Aclosed+branch%3Amaster). Strategi saya dalam memperbaiki code quality issues tersebut adalah melihat permasalahannya di tab `Security` di GitHub dan melakukan apa yang diminta permasalahan tersebut. Berhubung issue yang saya perbaiki cukup minor, hal tersebut sangat mudah dilakukan. Dari sekian banyak issues yang muncul di tab `Security`, saya hanya memperbaiki kedua jenis code quality issues tersebut karena issue-issue yang lain tidak terlalu berkaitan dengan kualitas code yang saya tulis. Issue lain lebih ke arah apa saja yang seharusnya terdapat dalam suatu project, seperti license, security policy, atau penambahan Dependabot.
 
 > Look at your CI/CD workflows (GitHub)/pipelines (GitLab). Do you think the current implementation has met the definition of Continuous Integration and Continuous Deployment? Explain the reasons (minimum 3 sentences)!
 
