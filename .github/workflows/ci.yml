@@ -30,7 +30,6 @@ jobs:
       - name: Commit and push the badge (if it changed)
         if: ${{ github.event_name != 'pull_request' }}
         run: |
-          cd badges
           if [[ `git status --porcelain *.svg ]]; then
             git config user.name 'github-actions[bot]'
             git config user.email 'github-actions[bot]@users.noreply.github.com'
