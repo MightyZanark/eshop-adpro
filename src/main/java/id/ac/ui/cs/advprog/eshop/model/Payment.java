@@ -68,8 +68,8 @@ public class Payment {
         String bankName = paymentData.get("bankName");
         String referenceCode = paymentData.get("referenceCode");
         
-        boolean isBankNameValid = bankName != null && bankName.isEmpty();
-        boolean isReferenceCodeValid = referenceCode != null && referenceCode.isEmpty();
+        boolean isBankNameValid = bankName != null && !bankName.isEmpty();
+        boolean isReferenceCodeValid = referenceCode != null && !referenceCode.isEmpty();
         if (isBankNameValid && isReferenceCodeValid) {
             return true;
         }
