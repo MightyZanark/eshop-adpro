@@ -68,11 +68,13 @@ public class Payment {
         String bankName = paymentData.get("bankName");
         String referenceCode = paymentData.get("referenceCode");
         
-        if (bankName == null || bankName.isEmpty() || referenceCode == null || referenceCode.isEmpty()) {
-            return false;
+        boolean isBankNameValid = bankName != null && bankName.isEmpty();
+        boolean isReferenceCodeValid = referenceCode != null && referenceCode.isEmpty();
+        if (isBankNameValid && isReferenceCodeValid) {
+            return true;
         }
         
-        return true;
+        return false;
     }
 
     private boolean checkVoucherCode(String voucherCode) {
