@@ -7,6 +7,7 @@ Deployment dapat dilihat di [sini](https://eshop-advprog-zanark-org.koyeb.app/).
 - [Modul 1](#modul-1)
 - [Modul 2](#modul-2)
 - [Modul 3](#modul-3)
+- [Modul 4](#modul-4)
 
 ## Modul 1
 
@@ -48,3 +49,13 @@ Dengan mengaplikasikan principle SOLID pada project saya, ketika saya ingin meng
 > Explain the disadvantages of not applying SOLID principles to your project with examples.
 
 Jika saya tidak mengaplikasikan principle SOLID pada project saya, maka saya membutuhkan waktu yang lebih untuk memastikan penambahan atau modifikasi pada code base tidak akan membuat hal-hal lain rusak dan tidak bekerja. Misalnya saya ingin mengubah implementasi pada method `delete` untuk `Product`. Saya akan mengubah implementasi method tersebut pada class `ProductRepository`, namun setelah mengubahnya, saya tidak punya keyakinan bahwa perubahan yang saya buat tidak akan merusak bagian-bagian lain dari code base saya. Bisa saja perubahan yang saya lakukan merusak sesuatu di tengah jalan sehingga ketika user ingin melakukan `Delete Product`, product tidak ke delete dan hal lain yang terjadi. Hal ini berarti saya harus menghabiskan waktu lebih untuk menyesuaikan code base terhadap code yang baru saja saya modifikasi. Tanpa menerapkan SOLID pada project saya, struktur project saya dapat terlihat berantakan atau terlalu kotor karena ada class dimana class tersebut melakukan berbagai macam hal sekaligus, misalnya menjadi controller dan service sekaligus.
+
+
+## Modul 4
+> Reflect based on Percival (2017) proposed self-reflective questions (in “Principles and Best Practice of Testing” submodule, chapter “Evaluating Your Testing Objectives”), whether this TDD flow is useful enough for you or not. If not, explain things that you need to do next time you make more tests.
+
+Menurut saya, flow TDD ini cukup membantu saya tapi di lain sisi juga membuat saya bekerja terlalu lama memikirkan test yang benar. Flow TDD ini sempat membantu saya menemukan bug yang saya mungkin terlewat jika saya tidak melakukan TDD. Bug tersebut ada pada PaymentRepository method save, yang seharusnya mengubah status order berdasarkan status payment tetapi saya terlewat belum mengimplement hal tersebut. TDD membuat saya mampu mendapatkan bug tersebut di awal sehingga saya tidak harus debug program saya nanti. Namun saya juga merasa terbatasi oleh TDD karena menghabiskan terlalu banyak waktu memikirkan test yang benar dan dimana harus meletakkan method yang sesuai.
+
+> You have created unit tests in Tutorial. Now reflect whether your tests have successfully followed F.I.R.S.T. principle or not. If not, explain things that you need to do the next time you create more tests.
+
+Menurut saya, semua test yang telah saya bikin pada tutorial ini kurang lebih sudah memenuhi principle F.I.R.S.T. Menurut saya, test yang saya buat sudah mengcover semua kemungkinan happy dan unhappy, namun saya masih kurang yakin apakah memang sudah semua kasus telah dibuat, sehingga saya kurang yakin terhadap terpenuhinya principle T. Tetapi, terkait principle lainnya dari F.I.R.S.T., saya yakin bahwa test yang saya buat sudah memenuhi principle-principle tersebut. Hal ini dikarenakan saya juga sudah mengikuti tutorial yang terlihat sudah memenuhi principle F.I.R.S.T. Test yang saya buat tidak berjalan terlalu lama karena test tidak terlalu kompleks, saya hanya mengetest hal-hal yang dianggap penting dari setiap method. Selain itu, test tersebut juga repeatable, isolated, dan self-validating karena saya memisahkan setiap kasus test menjadi testnya sendiri dan sudah memiliki assertions yang sesuai. 
