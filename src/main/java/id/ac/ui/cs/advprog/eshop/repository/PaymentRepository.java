@@ -41,4 +41,8 @@ public class PaymentRepository {
 
         return allPayments;
     }
+
+    public Order getOrder(String paymentId) {
+        return paymentOrder.get(paymentId);
+    }
 }
