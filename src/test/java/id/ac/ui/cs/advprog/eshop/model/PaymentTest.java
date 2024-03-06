@@ -24,6 +24,17 @@ class PaymentTest {
                 paymentData);
         });
     }
+    
+    @Test
+    void testSetInvalidStatus() {
+        Map<String, String> paymentData = new HashMap<>();
+        paymentData.put("voucherCode", "ESHOP12345678ABC");
+        Payment payment = new Payment("id-payment-testing-123", 
+            PaymentMethod.VOUCHER_CODE.getValue(), paymentData);
+        assertThrows(IllegalArgumentException.class, () -> {
+            payment.setStatus("HELLO");
+        });
+    }
 
     @Test
     void testValidVoucherCode() {
