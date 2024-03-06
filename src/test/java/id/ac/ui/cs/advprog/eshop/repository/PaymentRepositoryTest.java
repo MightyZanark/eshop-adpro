@@ -25,21 +25,14 @@ class PaymentRepositoryTest {
         paymentRepository = new PaymentRepository();
         payments = new ArrayList<>();
 
-        List<Product> products = new ArrayList<>();
-        Product product = new Product();
-        product.setProductId("eb558e9f-1c39-460e-8860-71af6af63bd6");
-        product.setProductName("Sampo Cap Bambang");
-        product.setProductQuantity(2);
-        products.add(product);
-
         Map<String, String> paymentVoucher = new HashMap<>();
         paymentVoucher.put("voucherCode", "ESHOP12345678ABC");
-        Payment payment1 = new Payment("id-1-payment", "VOUCHER_CODE", paymentVoucher);
+        Payment payment1 = new Payment("id-1-payment", PaymentMethod.VOUCHER_CODE.getValue(), paymentVoucher);
         payments.add(payment1);
         Map<String, String> paymentBank = new HashMap<>();
         paymentBank.put("bankName", "Bank Adpro");
         paymentBank.put("referenceCode", "DEADBEEF");
-        Payment payment2 = new Payment("id-2-payment", "BANK_TRANSFER", paymentBank);
+        Payment payment2 = new Payment("id-2-payment", PaymentMethod.BANK_TRANSFER.getValue(), paymentBank);
         payments.add(payment2);
     }
 
@@ -61,14 +54,14 @@ class PaymentRepositoryTest {
         Order order = new Order("test-id", null, 1709729613L, "author");
         Payment payment = payments.get(0);
         Payment result = paymentRepository.save(order, payment);
-        assertEquals("SUCCESS", result.getStatus());
-        assertEquals("SUCCESS", order.getStatus());
+        assertEquals(PaymentStatus.SUCCESS.getValue(), result.getStatus());
+        assertEquals(OrderStatus.SUCCESS.getValue(), order.getStatus());
 
-        paymentRepository.update(payment, "REJECTED");
+        paymentRepository.update(payment, PaymentStatus.REJECTED.getValue());
         Payment findResult = paymentRepository.findById(payments.get(0).getId());
         Order findOrder = paymentRepository.getOrder(findResult.getId());
-        assertEquals("REJECTED", findResult.getStatus());
-        assertEquals("FAILED", findOrder.getStatus());
+        assertEquals(PaymentStatus.REJECTED.getValue(), findResult.getStatus());
+        assertEquals(OrderStatus.FAILED.getValue(), findOrder.getStatus());
     }
 
     @Test
