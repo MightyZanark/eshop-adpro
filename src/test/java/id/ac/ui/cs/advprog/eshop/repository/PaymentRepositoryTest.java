@@ -18,13 +18,11 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class PaymentRepositoryTest {
     PaymentRepository paymentRepository;
-    Map<String, String> paymentRecord;
     List<Payment> payments;
 
     @BeforeEach
     void setUp() {
         paymentRepository = new PaymentRepository();
-        paymentRecord = new HashMap<>();
         payments = new ArrayList<>();
 
         List<Product> products = new ArrayList<>();
