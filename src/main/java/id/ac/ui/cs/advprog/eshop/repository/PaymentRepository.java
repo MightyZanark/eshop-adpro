@@ -1,5 +1,7 @@
 package id.ac.ui.cs.advprog.eshop.repository;
 
+import id.ac.ui.cs.advprog.eshop.enums.OrderStatus;
+import id.ac.ui.cs.advprog.eshop.enums.PaymentStatus;
 import id.ac.ui.cs.advprog.eshop.model.Order;
 import id.ac.ui.cs.advprog.eshop.model.Payment;
 import org.springframework.stereotype.Repository;
@@ -17,6 +19,11 @@ public class PaymentRepository {
     public Payment save(Order order, Payment payment) {
         paymentData.add(payment);
         paymentOrder.put(payment.getId(), order);
+        if (payment.getStatus().equals(PaymentStatus.SUCCESS.getValue())) {
+            order.setStatus(OrderStatus.SUCCESS.getValue());
+        } else {
+            order.setStatus(OrderStatus.FAILED.getValue());
+        }
         return payment;
     }
 
