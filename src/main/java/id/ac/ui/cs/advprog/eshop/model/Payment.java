@@ -29,6 +29,14 @@ public class Payment {
         }
     }
 
+    public void setStatus(String status) {
+        if (PaymentStatus.contains(status)) {
+            this.status = status;
+        } else {
+            throw new IllegalArgumentException();
+        }
+    }
+
     private void validateData() {
         boolean isValid = false;
         switch (PaymentMethod.valueOf(method)) {
