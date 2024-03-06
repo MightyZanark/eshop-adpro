@@ -1,6 +1,5 @@
 package id.ac.ui.cs.advprog.eshop.repository;
 
-import id.ac.ui.cs.advprog.eshop.enums.PaymentStatus;
 import id.ac.ui.cs.advprog.eshop.model.Order;
 import id.ac.ui.cs.advprog.eshop.model.Payment;
 import org.springframework.stereotype.Repository;
@@ -22,10 +21,6 @@ public class PaymentRepository {
     }
 
     public void update(Payment payment, String status) {
-        if (!PaymentStatus.contains(status)) {
-            throw new IllegalArgumentException();
-        }
-        
         payment.setStatus(status);
     }
 
